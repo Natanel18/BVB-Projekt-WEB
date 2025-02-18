@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BVB Splashscreen</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    /* Global Styles */
+    body, html {
+      margin: 0;
+      padding: 0;
+      font-family: 'Roboto', sans-serif;
+      background: #111;
+      color: #fff;
+      overflow: hidden;
+    }
+
+    /* Dynamischer Hintergrund */
+    #background {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('https://upload.wikimedia.org/wikipedia/commons/3/3f/BVB_Logo.svg') center no-repeat;
+      background-size: cover;
+      z-index: -1;
+      animation: backgroundAnimation 20s infinite linear;
+    }
+
+    @keyframes backgroundAnimation {
+      0% { background-position: 0% 0%; }
+      50% { background-position: 100% 100%; }
+      100% { background-position: 0% 0%; }
+    }
+
+    /* Container für den Splashscreen */
+    #splashscreen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.6); /* Dunkler Overlay-Effekt */
+      z-index: 1000;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    
+    /* Overlay Text ohne Glow-Effekt */
+    .splash-overlay {
+      position: absolute;
+      top: 10%;
+      width: 100%;
+      text-align: center;
+      color: #FDE100;  /* BVB-Gelb */
+      font-family: 'Oswald', sans-serif;
+      font-size: 3.5em;
+      font-weight: 700;
+      text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+      z-index: 1010;
+      opacity: 0;
+      animation: fadeIn 2s ease-out forwards;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Video Styling */
+    #splashscreen video {
+      width: 80%;           /* 80% der Bildschirmbreite */
+      max-width: 800px;      /* maximal 800px */
+      border: 4px solid #FDE100;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+      object-fit: contain;   /* Zeigt das gesamte Video */
+      z-index: 1000;
+    }
+    
+    /* Button als Link zur Hauptseite */
+    #enter-button {
+      position: absolute;
+      bottom: 15%;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 15px 30px;
+      font-size: 1.5em;
+      background-color: #FDE100; /* BVB-Gelb */
+      color: #000;
+      border: none;
+      cursor: pointer;
+      border-radius: 50px;
+      text-decoration: none;
+      z-index: 1010;
+      font-family: 'Oswald', sans-serif;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
+      transition: background-color 0.3s, transform 0.3s;
+    }
+
+    #enter-button:hover {
+      background-color: #ffd700;
+      transform: translateX(-50%) scale(1.1);
+    }
+
+    /* Hauptinhalt der Seite (optional) */
+    #main-content {
+      display: none;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+      padding: 40px;
+      text-align: center;
+      background-color: #111;
+      min-height: 100vh;
+    }
+    
+    .show-main-content {
+      display: block;
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Dynamischer Hintergrund -->
+  <div id="background"></div>
+
+  <!-- Splashscreen Container -->
+  <div id="splashscreen">
+    <!-- Überschrift als Overlay ohne Glow -->
+    <div class="splash-overlay">
+      Willkommen beim BVB!
+    </div>
+    <!-- Eingebettetes Video (lokales MP4-Video) -->
+    <video id="splash-video" autoplay muted>
+      <source src="file:///H:/WEB%20ASOO/NEUE%20WEBSITE/Vorlage%202-20250203/Vorlage%202/Video/v09025g40000cohvbtvog65vugtgon00.mp4" type="video/mp4">
+      Ihr Browser unterstützt dieses Videoformat nicht.
+    </video>
+    <!-- Button als Link zur Hauptseite -->
+    <a id="enter-button" href="file:///H:/WEB%20ASOO/NEUE%20WEBSITE/Vorlage%202-20250203/Vorlage%202/index.html">Zur Hauptseite</a>
+  </div>
+
+  <!-- Hauptinhalt der Seite (optional) -->
+  <div id="main-content">
+    <h1>Hauptseite</h1>
+    <p>Hier beginnt der Hauptinhalt!</p>
+  </div>
+
+</body>
+</html>
